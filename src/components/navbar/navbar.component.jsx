@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 
 import {ReactComponent as Logo} from '../../assets/4.3 crown.svg.svg';
 import {auth} from '../../firebase/firebase.utils';
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 import './navbar.styles.scss';
 
@@ -25,7 +27,9 @@ const Navbar = ({currentUser}) => (
                         SIGN IN
                     </Link>)
             }
+            <CartIcon/>
         </div>
+        <CartDropdown/>
     </div>
 )
 
