@@ -9,7 +9,7 @@ import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 import './navbar.styles.scss';
 
-const Navbar = ({currentUser}) => (
+const Navbar = ({currentUser, hidden}) => (
     <div className='header'>
         <Link to="/" className='logo-container'>
             <Logo className='logo'/>
@@ -29,12 +29,15 @@ const Navbar = ({currentUser}) => (
             }
             <CartIcon/>
         </div>
-        <CartDropdown/>
+        {
+            hidden ? null : <CartDropdown/>
+        }
     </div>
 )
 
-const mapStateToProps = state => ({
-    currentUser: state.user.currentUser
+const mapStateToProps = ({user: {currentUser}, cart: {hidden}}) => ({
+    currentUser,
+    hidden
 })
 
 export default connect(mapStateToProps)(Navbar);
